@@ -40,6 +40,7 @@ router.post("/login", async (req, res) => {
         _id: client._id,
         name: client.name,
         email: client.email,
+        type:client.type,
         token: generateToken(client._id),
       });
     } else {

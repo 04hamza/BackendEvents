@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Prestataire = require('../models/Prestataire');  
+const Prestation = require('../models/Prestation');
 
 
 router.post('/', async (req, res) => {
@@ -23,10 +24,11 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/prestataires', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const prestataires = await Prestataire.find().populate('prestations');  // Populating prestation reference
-        res.status(200).json(prestataires);
+        const prestataires = await Prestataire.find();
+        const prestation = await Prestation.find();
+        res.status(200).json({prestataires,prestation});
     } catch (err) {
         res.status(500).json({ message: "Error fetching Prestataires", error: err });
     }

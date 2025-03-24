@@ -7,7 +7,6 @@ const clientSchema =new mongoose.Schema({
     telephone: { type: String, required: true },
     ville: { type: String,required: true  },
     modepass:{type: String,required: true  },
-    date:{type:Date,required: true  },
     formJuridique: {  type: String, enum: ['SARL', 'SA', 'Auto-Entrepreneur'], required: function(){ 
                return this.type !== 'Particulier'; 
     }} ,
